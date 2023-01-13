@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  div.tabletitle
+    div Employees
+    div
+      a(href='/add') Add Employee
+  table
+    thead
+      th First
+      th Last
+      th Title
+      th Address
+      th Number
+      th Year Hired
+      th Actions
+    tbody
+      each employee in employees
+        tr
+          td= employee.first_name
+          td= employee.last_name
+          td= employee.job_title
+          td
+            div #{employee.street_line_1}
+            div #{employee.street_line_2}
+            div= `${employee.city}, ${employee.state}, ${employee.zip}`
+          td= employee.phone_number
+          td= employee.year_hired
+          td
+            div.actions
+              a(href=`/update/${employee.id}`) Edit
+              a(href=`/delete/${employee.id}`) Delete
